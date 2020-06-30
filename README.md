@@ -1,1 +1,1 @@
-# Aramex_API-Rate
+# Aramex_API
