@@ -1,0 +1,104 @@
+/* rgb(0, 111, 164)  */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f6f6;
+    font-family: 'Karla';
+    color: #313131;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+label {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+span {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 60%;
+}
+
+.list-group-item {
+    padding: 3px;
+    text-align: center;
+}
+.list-group-item.active{
+    background-color: rgb(0, 111, 164);
+}
+
+
+.form-rounded {
+    border-radius: 1rem;
+}
+
+#weight {
+    width: 20%;
+    margin-right: 10px;
+}
+
+#unit {
+    width: 100px;
+}
+
+.cal-btn {
+    width: 100%;
+    text-align: center;
+}
+.btn-outline-primary {
+    border-color: rgb(0, 111, 164);
+    color: rgb(0, 111, 164);
+}
+.btn-outline-primary:hover {
+    background: rgb(0, 111, 164);
+    color:#fff;
+}
+
+.spinner-border {
+    display: none;
+}
+
+.spinner-border {
+    color:rgb(0, 111, 164);
+
+}
+
+.rate {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .container {
+        margin-top: 30px;
+        width: 80%;
+    }  
+    #weight {
+        width: 50%;
+    }
+    #unit {
+        width: 50%;
+    }
+    
+}

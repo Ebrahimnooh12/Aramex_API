@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>    
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Aramex Rate Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card p-4">
+            <div class="header">
+                <h3 class="header mb-2">Rate Calculator</h3>
+                <div class="list-group list-group-horizontal mb-2" id="Product-Groups" role="tablist">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#international" role="tab">International</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#domestic" role="tab">Domestic</a>
+                </div>
+            </div>
+            <div class="card-body ml-2">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="international" role="tabpanel">                    
+                    <form id="rate-form-international" action="RateCalculator.php" method="post">
+                        <div class="from-details mb-2">
+                            <h4>From:</h4>
+                            <div class="form-group pl-2">
+                                <label for="from-country">Country <span class="text-danger">*</span></label>
+                                <select name="from_country" id="from-country" class="form-control form-rounded">
+                                    <option  value="BH">Bahrain</option>
+                                    <option  value="SA">Saudi Arabia</option>
+                                </select>
+                            </div>
+                            <div class="form-group pl-2">
+                                <label for="from-city">City <span class="text-danger">*</span></label>
+                                <select name="from_city" id="from-city" class="form-control form-rounded"></select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="to-details mb-2">
+                            <h4>To:</h4>
+                            <div class="form-group pl-2">
+                                <label for="to-country">Country <span class="text-danger">*</span></label>
+                                <select name="to_country" id="to-country" class="form-control form-rounded">
+                                    <option  value="BH">Bahrain</option>
+                                    <option  value="SA">Saudi Arabia</option>
+                                </select>
+                            </div>
+                            <div class="form-group pl-2">
+                                <label for="to-city">City <span class="text-danger">*</span></label>
+                                <select name="to_city" id="to-city" class="form-control form-rounded"></select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="shipment-details mb-2">
+                            <h4>Shipment Details:</h4>
+                            <div class="form-group pl-2">
+                                <label for="s-type">Type <span class="text-danger">*</span></label>
+                                <select name="s_type" id="s-type" class="form-control form-rounded">
+                                    <!-- Documents and printed matter --> 
+                                    <option  value="PDX">Documents and printed matter</option>
+                                    <!-- Packages, packets, boxes, and other objects --> 
+                                    <option  value="PPX">Packages, packets, boxes, and other objects</option>
+                                </select>
+                            </div>
+                            <div class="form-group pl-2">
+                                <label for="weight">Total Gross Weight<span class="text-danger">*</span></label>
+                                <span class="error"></span>
+                                <div class="d-flex">
+                                    <input id="weight" name='weight' class="form-control form-rounded" type="text" value="0.5">
+                                    <select name="unit" id="unit" class="form-control form-rounded">
+                                        <option  value="KG">kg</option>
+                                        <option  value="LB">Lb</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cal-btn">
+                            <button id='calculate-international'  name="int_sub" class="btn btn-outline-primary form-rounded">Calculate <i class="ml-2 fas fa-calculator"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="domestic" role="tabpanel">
+                    <form id="rate-form-domestic" action="RateCalculator.php" method="post">
+                        <div class="from-details mb-2">
+                            <h3>Country</h3>
+                            <div class="form-group pl-2">
+                                <select name="from_country" id="from-country-domestic" class="form-control form-rounded">
+                                    <option  value="BH">Bahrain</option>
+                                    <option  value="SA">Saudi Arabia</option>
+                                </select>
+                            </div>
+                            <hr>
+                            <h4>From:</h4>
+                            <div class="form-group pl-2">
+                                <label for="from-city">City <span class="text-danger">*</span></label>
+                                <select name="from_city" id="from-city-domestic" class="form-control form-rounded"></select>
+                            </div>
+                        </div>
+                        <div class="to-details mb-2">
+                            <h4>To:</h4>
+                            <div class="form-group pl-2">
+                                <label for="to-city">City <span class="text-danger">*</span></label>
+                                <select name="to_city" id="to-city-domestic" class="form-control form-rounded"></select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="shipment-details mb-2">
+                            <h4>Shipment Details:</h4>
+                            <div class="form-group pl-2">
+                                <label for="s-type">Type <span class="text-danger">*</span></label>
+                                <select name="s_type" id="s-type" class="form-control form-rounded">
+                                    <!-- Documents and printed matter --> 
+                                    <option  value="PDX">Documents and printed matter</option>
+                                    <!-- Packages, packets, boxes, and other objects --> 
+                                    <option  value="PPX">Packages, packets, boxes, and other objects</option>
+                                </select>
+                            </div>
+                            <div class="form-group pl-2">
+                                <label for="weight">Total Gross Weight<span class="text-danger">*</span></label>
+                                <span class="error"></span>
+                                <div class="d-flex">
+                                    <input id="weight" name='weight' class="form-control form-rounded" type="text" value="0.5">
+                                    <select name="unit" id="unit" class="form-control form-rounded">
+                                        <option  value="KG">kg</option>
+                                        <option  value="LB">Lb</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cal-btn">
+                            <button id='calculate-domestic'  name="domestic_sub" class="btn btn-outline-primary form-rounded">Calculate <i class="ml-2 fas fa-calculator"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="rate-card d-flex justify-content-center mt-3">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="rate card p-3">
+                    <div class="rate-body">
+                        <h4>Your Shipment Rate Results</h4>
+                        <p class="price"></p>
+                        <span>*Surcharges and limits are applied according to terms and conditions. Prices include taxes</span>
+                    </div>
+                    <p class="rate-error error"></p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
