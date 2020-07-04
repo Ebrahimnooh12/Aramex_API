@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>    
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Aramex Shipping</title>
+</head>
+
+<style>
+
+</style>
+<body>
+    <div class="container">
+        <!--Request body start-->
+        <div id="request" class="card">
+            <div class="loader-container">
+                <div class="loader"></div>
+            </div>
+            <div class="header">
+                <h3 class="header m-3">Shipping</h3>
+                <hr>
+            </div>
+            <div class="card-body">
+            <form id="shipping-form" action="Shipping.php" method="post">
+                <div id="accordion">
+                <!--Client Information start-->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Client information <span class="text-danger">*</span>
+                            </button>
+                        </h5>
+                     </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="form-group pl-3">
+                            <label for="client-username">Username <span class="text-danger">*</span></label>
+                            <input id="client-username" name='client_username' class="form-control form-rounded" type="text"  >
+                            <span id="error-client-username" class="error ml-2"></span>
+
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="client-password">Password <span class="text-danger">*</span></label>
+                            <input id="client-password" name='client_password' class="form-control form-rounded" type="password"  >
+                            <span id="error-client-password" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="client-acccount">Account No. <span class="text-danger">*</span></label>
+                            <input id="client-acccount" name='client_acccount' class="form-control form-rounded" type="text"  >
+                            <span id="error-client-account" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="client-pin">Account Pin <span class="text-danger">*</span></label>
+                            <input id="client-pin" name='client_pin' class="form-control form-rounded" type="text"  >
+                            <span id="error-client-pin" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="client-country">Account Country <span class="text-danger">*</span></label>
+                            <select name="client_country" id="client-country" class="form-control form-rounded">
+                                <option  value="BH">Bahrain</option>
+                                <option  value="SA">Saudi Arabia</option>
+                            </select>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="client-entity">Account Entity <span class="text-danger">*</span></label>
+                            <input id="client-entity" name='client_entity' class="form-control form-rounded" type="text"  >
+                            <span id="error-client-entity" class="error ml-2"></span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!--Client Information End-->
+
+                <!--Transaction start-->                
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed text-dark" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Transaction
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="form-group pl-3">
+                            <label for="transaction-ref-1">Reference No.1</label>
+                            <input id="transaction-ref-1" name='transaction_ref1' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="transaction-ref-2">Reference No.2</label>
+                            <input id="transaction-ref-2" name='transaction_ref2' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="transaction-ref-3">Reference No.3</label>
+                            <input id="transaction-ref-3" name='transaction_ref3' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="transaction-ref-4">Reference No.4</label>
+                            <input id="transaction-ref-4" name='transaction_ref4' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="transaction-ref-5">Reference No.5</label>
+                            <input id="transaction-ref-5" name='transaction_ref5' class="form-control form-rounded" type="text">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!--Transaction end-->
+
+                <!--Label start-->
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link  text-dark collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Label <span class="text-danger">*</span>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="form-group pl-3">
+                            <label for="label-report">Report ID<span class="text-danger">*</span></label>
+                            <input id="label-report" name='label_report' value="9201" class="form-control form-rounded" type="text"  >
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="label-report-type">Report Type<span class="text-danger">*</span></label>
+                            <select name="label_report_type" id="label-report-type" class="form-control form-rounded">
+                                <option  value="URL">as URL</option>
+                                <option  value="RPT">as File</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!--Label end-->
+
+                <!--Shipper start-->
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link  text-dark collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Shipper Details <span class="text-danger">*</span>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="form-group pl-3">
+                            <label for="shipper-company">Company<span class="text-danger">*</span></label>
+                            <input id="shipper-company" name='shipper_company' class="form-control form-rounded" type="text"  >
+                            <span id="error-shipper-company" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-person">PersonName<span class="text-danger">*</span></label>
+                            <input id="shipper-person" name='shipper_person' class="form-control form-rounded" type="text"  >
+                            <span id="error-shipper-person" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-country">Country<span class="text-danger">*</span></label>
+                            <select name="shipper_country" id="shipper-country" class="form-control form-rounded">
+                                <option  value="BH">Bahrain</option>
+                                <option  value="SA">Saudi Arabia</option>
+                            </select>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-city">City<span class="text-danger">*</span></label>
+                            <input id="shipper-city" name='shipper_city' class="form-control form-rounded" type="text">
+                            <span id="error-shipper-city" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-postal">Postal code</label>
+                            <input id="shipper-postal" name='shipper_postal' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-state">State</label>
+                            <input id="shipper-state" name='shipper_state' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3 justify-content-start">
+                            <label for="shipper-phone">Phone number<span class="text-danger">*</span></label>
+                            <div class="d-flex">
+                                <input id="shipper-phone-ext" placeholder="+973"  name='shipper_phone_ext' class="form-control form-rounded extension" type="text">
+                                <input id="shipper-phone" name='shipper_phone' class="form-control form-rounded" type="text"  >
+                            </div>
+                            <span id="error-shipper-phone-ext" class="error ml-2"></span>
+                            <span id="error-shipper-phone" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3 justify-content-start">
+                            <label for="shipper-mobile">Mobile number<span class="text-danger">*</span></label>
+                            <input id="shipper-mobile" name='shipper_mobile' class="form-control form-rounded" type="text"  >
+                            <span id="error-shipper-phone" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-email">Email<span class="text-danger">*</span></label>
+                            <input id="shipper-email" name='shipper_email' class="form-control form-rounded" type="text">
+                            <span id="error-shipper-phone" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-line1">Adress line 1<span class="text-danger">*</span></label>
+                            <input id="shipper-line1" name='shipper_line1' class="form-control form-rounded" type="text">
+                            <span id="error-shipper-line1" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-line2">Adress line 2</label>
+                            <input id="shipper-line2" name='shipper_line2' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-ref1">Reference 1</label>
+                            <input id="shipper-ref1" name='shipper_ref1' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-ref2">Reference 2</label>
+                            <input id="shipper-ref2" name='shipper_ref2' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipper-ref3">Reference 3</label>
+                            <input id="shipper-ref3" name='shipper_ref3' class="form-control form-rounded" type="text">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!--Shipper end-->
+
+                <!--Receiver start-->
+                <div class="card">
+                    <div class="card-header" id="headingFive">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link  text-dark collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Receiver Details <span class="text-danger">*</span>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="form-group pl-3">
+                            <label for="receiver-company">Company/Person name<span class="text-danger">*</span></label>
+                            <input id="receiver-company" name='receiver_company' class="form-control form-rounded" type="text">
+                            <span id="error-receiver-company" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="receiver-country">Country<span class="text-danger">*</span></label>
+                            <select name="receiver_country" id="receiver-country" class="form-control form-rounded">
+                                <option  value="BH">Bahrain</option>
+                                <option  value="SA">Saudi Arabia</option>
+                            </select>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="receiver-city">City<span class="text-danger">*</span></label>
+                            <input id="receiver-city" name='receiver_city' class="form-control form-rounded" type="text">
+                            <span id="error-receiver-city" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="receiver-postal">Postal code</label>
+                            <input id="receiver-postal" name='receiver_postal' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="receiver-state">State</label>
+                            <input id="receiver-state" name='receiver_state' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3 justify-content-start">
+                            <label for="receiver-phone">Phone number<span class="text-danger">*</span></label>
+                            <div class="d-flex">
+                                <input id="receiver-phone-ext" placeholder="+973"  name='receiver_phone_ext' class="form-control form-rounded extension" type="text">
+                                <input id="receiver-phone" name='receiver_phone' class="form-control form-rounded" type="text"  >
+                            </div>
+                            <span id="error-receiver-phone-ext" class="error ml-2"></span>
+                            <span id="error-receiver-phone" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3 justify-content-start">
+                            <label for="receiver-mobile">Mobile number<span class="text-danger">*</span></label>
+                            <input id="receiver-mobile" name='receiver_mobile' class="form-control form-rounded" type="text"  >
+                            <span id="error-receiver-mobile" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="receiver-email">Email<span class="text-danger">*</span></label>
+                            <input id="receiver-email" name='receiver_email' class="form-control form-rounded" type="email">
+                            <span id="error-receiver-email" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="receiver-line1">Adress line 1<span class="text-danger">*</span></label>
+                            <input id="receiver-line1" name=' receiver_line1' class="form-control form-rounded" type="text">
+                            <span id="error-receiver-line1" class="error ml-2"></span>
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="receiver-line2">Adress line 2</label>
+                            <input id="receiver-line2" name='receiver_line2' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="receiver-ref1">Reference 1</label>
+                            <input id="receiver-ref1" name='receiver_ref1' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="receiver-ref1">Reference 2</label>
+                            <input id="receiver-ref2" name='receiver_ref2' class="form-control form-rounded" type="text">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!--Receiver end-->
+
+                <!--Shipment details start-->
+                <div class="card">
+                    <div class="card-header" id="headingSix">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link  text-dark collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Shipment details <span class="text-danger">*</span>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="form-group pl-3">
+                            <label for="shipment-HAWB">Foreign HAWB</label>
+                            <input id="shipment-HAWB" name='shipment_HAWB' class="form-control form-rounded" type="text">
+                        </div>
+                        <div class="form-group pl-3">
+                            <label for="shipment-product-type">Type<span class="text-danger">*</span></label>
+                            <select name="shipment_product_type" id="shipment-product-type" class="form-control form-rounded">
+                                <option value="PDX">Document</option>
+                                <option value="PPX">Parcel</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <div class="form-group pl-3">
+                            <label>Weight<span class="text-danger">*</span></label>
+                            <div class="p-3">
+                                <label for="shipment-pieces">Number of Pieces<span class="text-danger">*</span></label>
+                                <input id="shipment-pieces" name='shipment_pieces' class="form-control form-rounded" type="text" value="1">                    
+                                <span id="error-shipment-pieces" class="error"></span>
+                                <div class="d-flex mt-3">
+                                    <div class="mr-2">
+                                        <label for="shipment-weight">Total gross weight<span class="text-danger">*</span></label>
+                                        <input id="shipment-weight" name='shipment_weight' class="form-control form-rounded" value="0.5" type="text">
+                                        <span id="error-shipment-weight" class="error"></span>
+                                    </div>
+                                    <div>
+                                        <label for="weight-unit">Unit<span class="text-danger">*</span></label>
+                                        <select name="weight_unit" id="weight-unit" class="form-control form-rounded">
+                                            <option value="Kg">kg</option>
+                                            <option value="Lb">Lb</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group pl-3">
+                                <label for="desc-goods">Description Of Goods<span class="text-danger">*</span></label>
+                                <input id="desc-goods" name='desc_goods' class="form-control form-rounded" type="text" placeholder="Clothes, Electronic Gadgets ….">                    
+                                <span id="error-desc-goods" class="error"></span>
+                            </div>
+                            <div class="form-group pl-3">
+                                <label for="origin-goods">Goods Origin Country<span class="text-danger">*</span></label>
+                                <select name="origin_goods" id="origin-goods" class="form-control form-rounded">
+                                    <option  value="BH">Bahrain</option>
+                                    <option  value="SA">Saudi Arabia</option>
+                                </select>
+                            </div>
+                            <div class="form-group pl-3">
+                                <label for="shipment-ref1">Reference</label>
+                                <input id="shipment-ref1" name='shipment_ref1' class="form-control form-rounded" type="text">
+                            </div>
+                            <div class="form-group pl-3">
+                                <label for="shipment-comments">Comments</label>
+                                <input id="shipment-comments" name='shipment_comments' class="form-control form-rounded" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!--Shipment details end-->
+
+                <!--payment start-->
+                <div class="card">
+                    <div class="card-header" id="headingSeven">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link  text-dark collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            Payment Method <span class="text-danger">*</span>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="form-group pl-3">
+                            <label for="pay-method">Method<span class="text-danger">*</span></label>
+                            <select name="pay_method" id="pay-method" class="form-control form-rounded">
+                                <option  value="CASH">In cash by the Shipper</option>
+                                <option  value="CRDT">By credit card by the Shipper</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!--payment end-->
+            </div>
+            <div class="d-felx mt-3 mb-3" style="text-align: end;">
+                <button id="create" class="btn btn-outline-primary">Ship <i class="ml-2 fas fa-shipping-fast"></i></button>        
+            </div>        
+            </form>
+            </div>
+        </div>
+        <!--Request body end-->
+
+        <!--Response body start-->
+        <div id="response" class="card p-5">
+            <div class="header">
+                <h1>Shipment Details</h1>
+                <hr> 
+            </div>
+            <div id="details-body" class="card-body">
+                <div class="d-flex">
+                    <h3 class="font-weight-bold mr-2">ID:</h3>
+                    <p id='s-id'></p>
+                </div>
+                <div class="d-flex">
+                    <h3 class="font-weight-bold mr-2">Label URL:</h3>
+                    <a id='s-label-url' href=""></a>
+                </div>
+                <div class="d-flex">
+                    <h3 class="font-weight-bold mr-2">Origin:</h3>
+                    <p id='s-origin'></p>
+                </div>
+                <div class="d-flex">
+                    <h3 class="font-weight-bold mr-2">Destination:</h3>
+                    <p id='s-destination'></p>
+                </div>
+                <div class="d-flex">
+                    <h3 class="font-weight-bold mr-2">Description Of Goods:</h3>
+                    <p id='s-goods-desc'></p>
+                </div>
+                <div class="d-flex">
+                    <h3 class="font-weight-bold mr-2">Chargeable Weight:</h3>
+                    <p id='s-weight'></p>
+                </div>
+                <div class="d-flex">
+                    <h3 class="font-weight-bold mr-2">Number Of Pieces:</h3>
+                    <p id='s-pieces'></p>
+                </div>
+            </div>
+        </div>
+        <!--Response body end-->
+
+    </div>
+</body>
+</html>
